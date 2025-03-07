@@ -1,59 +1,59 @@
 <script setup lang="ts">
-import { Calendar, Home, Inbox, Search, Settings } from "lucide-vue-next"
-import {
-    Sidebar,
-    SidebarContent,
-    SidebarGroup,
-    SidebarGroupContent,
-    SidebarGroupLabel,
-    SidebarMenu,
-    SidebarMenuButton,
-    SidebarMenuItem,
-} from "@/components/ui/sidebar"
+import { Calendar, Home, Inbox, Search, Settings } from "lucide-vue-next";
+import { ref } from 'vue';
+import { useRoute } from 'vue-router';  // Import useRoute to access the current route
 
-// Menu items.
+// Menu items with routing
 const items = [
     {
-        title: "Home",
-        url: "#",
+        title: "Dashboard",
+        url: "/dashboard",
         icon: Home,
     },
     {
-        title: "Inbox",
-        url: "#",
+        title: "Blank",
+        url: "/blank",
         icon: Inbox,
     },
     {
         title: "Calendar",
-        url: "#",
+        url: "/calendar",
         icon: Calendar,
     },
     {
         title: "Search",
-        url: "#",
+        url: "/search",
         icon: Search,
     },
     {
         title: "Settings",
-        url: "#",
+        url: "/settings",
         icon: Settings,
     },
 ];
+
+// Reactive variable to check active route
+const route = useRoute();
+
+// Function to check if a route is active
+const isActive = (path: string) => {
+    return route.path === path;
+};
 </script>
 
 <template>
     <Sidebar>
         <SidebarContent>
             <SidebarGroup>
-                <SidebarGroupLabel>Application</SidebarGroupLabel>
+                <SidebarGroupLabel class="mb-10 text-xl">LYHORNG</SidebarGroupLabel>
                 <SidebarGroupContent>
                     <SidebarMenu>
                         <SidebarMenuItem v-for="item in items" :key="item.title">
                             <SidebarMenuButton asChild>
-                                <a :href="item.url">
+                                <nuxt-link :to="item.url" class="waves-effect">
                                     <component :is="item.icon" />
-                                    <span>{{ item.title }}</span>
-                                </a>
+                                    <span :class="{ active: isActive(item.url) }">{{ item.title }}</span>
+                                </nuxt-link>
                             </SidebarMenuButton>
                         </SidebarMenuItem>
                     </SidebarMenu>
@@ -62,3 +62,15 @@ const items = [
         </SidebarContent>
     </Sidebar>
 </template>
+
+<style scoped>
+.active {
+    color: rgb(0, 160, 234);
+    /* Change text color to white for active item */
+}
+
+/* Optional: Change icon color for active item */
+.active svg {
+  fill: #ffffff; /* Change icon color to white */
+}
+</style>
