@@ -59,6 +59,14 @@ const isActive = (path: string) => {
                     </SidebarMenu>
                 </SidebarGroupContent>
             </SidebarGroup>
+
+            <!-- Avatar at the bottom -->
+            <div class="mt-auto p-4 flex items-center justify-between bg-gray-100">
+                <Avatar>
+                    <AvatarImage src="https://github.com/unovue.png" alt="@unovue" />
+                    <AvatarFallback>CN</AvatarFallback>
+                </Avatar>
+            </div>
         </SidebarContent>
     </Sidebar>
 </template>
@@ -86,5 +94,12 @@ const isActive = (path: string) => {
 /* Optional: Change icon color for active item */
 .active svg {
   fill: rgb(0, 160, 234); /* Change icon color to match active item */
+}
+
+/* Avatar section style at the bottom */
+.activity-section {
+  margin-top: auto; /* Push the avatar section to the bottom */
+  padding: 16px; /* Add some padding */
+  background-color: #f5f5f5; /* Light gray background */
 }
 </style>
