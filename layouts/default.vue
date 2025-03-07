@@ -6,13 +6,23 @@ import Menubar from "~/components/Menubar.vue";
 
 <template>
   <SidebarProvider>
-    <AppSidebar />
-    <main class="flex flex-col">
-      <div class="flex items-center gap-2 p-2">
-        <SidebarTrigger />
-        <Menubar />
-      </div>
-      <slot />
-    </main>
+    <div class="flex h-screen w-screen overflow-hidden">
+      <!-- Sidebar -->
+      <AppSidebar />
+
+      <!-- Main Content -->
+      <main class="flex flex-col flex-grow bg-gray-100">
+        <!-- Top Bar -->
+        <div class="flex items-center gap-2 p-4 bg-white shadow-md">
+          <SidebarTrigger />
+          <Menubar />
+        </div>
+
+        <!-- Page Content -->
+        <div class="flex-grow p-6 overflow-auto">
+          <slot />
+        </div>
+      </main>
+    </div>
   </SidebarProvider>
 </template>
