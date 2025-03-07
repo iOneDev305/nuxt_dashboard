@@ -45,14 +45,14 @@ const isActive = (path: string) => {
     <Sidebar>
         <SidebarContent>
             <SidebarGroup>
-                <SidebarGroupLabel class="mb-10 text-xl">LYHORNG</SidebarGroupLabel>
+                <SidebarGroupLabel class="mb-10 text-xl font-bold text-gray-800">LYHORNG</SidebarGroupLabel>
                 <SidebarGroupContent>
                     <SidebarMenu>
                         <SidebarMenuItem v-for="item in items" :key="item.title">
                             <SidebarMenuButton asChild>
-                                <nuxt-link :to="item.url" class="waves-effect">
-                                    <component :is="item.icon" />
-                                    <span :class="{ active: isActive(item.url) }">{{ item.title }}</span>
+                                <nuxt-link :to="item.url" class="waves-effect flex items-center py-2">
+                                    <component :is="item.icon" class="mr-4" />
+                                    <span :class="{ active: isActive(item.url) }" class="menu-item-text">{{ item.title }}</span>
                                 </nuxt-link>
                             </SidebarMenuButton>
                         </SidebarMenuItem>
@@ -64,13 +64,27 @@ const isActive = (path: string) => {
 </template>
 
 <style scoped>
+/* Style for the menu item text */
+.menu-item-text {
+    font-size: 16px;  /* Set a comfortable font size */
+    font-weight: 500; /* Set a medium weight for text */
+    letter-spacing: 0.5px; /* Add slight letter spacing */
+    color: #333;  /* Default color */
+    transition: color 0.3s ease; /* Smooth color transition on hover */
+}
+
+.menu-item-text:hover {
+    color: #00A0EA; /* Change color on hover */
+}
+
+/* Active menu item styling */
 .active {
-    color: rgb(0, 160, 234);
-    /* Change text color to white for active item */
+    color: rgb(0, 160, 234); /* Active item color */
+    font-weight: 600; /* Make font bold for active item */
 }
 
 /* Optional: Change icon color for active item */
 .active svg {
-  fill: #ffffff; /* Change icon color to white */
+  fill: rgb(0, 160, 234); /* Change icon color to match active item */
 }
 </style>
