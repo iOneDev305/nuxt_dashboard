@@ -11,13 +11,13 @@ const items = [
         icon: Home,
     },
     {
-        title: "Blank",
-        url: "/blank",
+        title: "Components",
+        url: "/component",
         icon: Inbox,
     },
     {
         title: "Calendar",
-        url: "/calendar",
+        url: "/login",
         icon: Calendar,
     },
     {
@@ -45,14 +45,15 @@ const isActive = (path: string) => {
     <Sidebar>
         <SidebarContent>
             <SidebarGroup>
-                <SidebarGroupLabel class="mb-10 text-xl font-bold text-gray-800">LYHORNG</SidebarGroupLabel>
+                <SidebarGroupLabel class="mb-10 text-xl font-bold text-gray-800">MY APP</SidebarGroupLabel>
                 <SidebarGroupContent>
                     <SidebarMenu>
                         <SidebarMenuItem v-for="item in items" :key="item.title">
                             <SidebarMenuButton asChild>
                                 <nuxt-link :to="item.url" class="waves-effect flex items-center py-2">
                                     <component :is="item.icon" class="mr-4" />
-                                    <span :class="{ active: isActive(item.url) }" class="menu-item-text">{{ item.title }}</span>
+                                    <span :class="{ active: isActive(item.url) }" class="menu-item-text">{{ item.title
+                                    }}</span>
                                 </nuxt-link>
                             </SidebarMenuButton>
                         </SidebarMenuItem>
@@ -60,6 +61,9 @@ const isActive = (path: string) => {
                 </SidebarGroupContent>
             </SidebarGroup>
 
+        </SidebarContent>
+
+        <SidebarFooter>
             <!-- Avatar at the bottom -->
             <div class="mt-auto p-4 flex items-center justify-between bg-gray-100">
                 <Avatar>
@@ -67,39 +71,35 @@ const isActive = (path: string) => {
                     <AvatarFallback>CN</AvatarFallback>
                 </Avatar>
             </div>
-        </SidebarContent>
+        </SidebarFooter>
     </Sidebar>
 </template>
 
 <style scoped>
-/* Style for the menu item text */
 .menu-item-text {
-    font-size: 16px;  /* Set a comfortable font size */
-    font-weight: 500; /* Set a medium weight for text */
-    letter-spacing: 0.5px; /* Add slight letter spacing */
-    color: #333;  /* Default color */
-    transition: color 0.3s ease; /* Smooth color transition on hover */
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    color: #333;
+    transition: color 0.3s ease;
 }
 
 .menu-item-text:hover {
-    color: #00A0EA; /* Change color on hover */
+    color: #00A0EA;
 }
 
-/* Active menu item styling */
 .active {
-    color: rgb(0, 160, 234); /* Active item color */
-    font-weight: 600; /* Make font bold for active item */
+    color: rgb(0, 160, 234);
+    font-weight: 600;
 }
 
-/* Optional: Change icon color for active item */
 .active svg {
-  fill: rgb(0, 160, 234); /* Change icon color to match active item */
+    fill: rgb(0, 160, 234);
 }
 
-/* Avatar section style at the bottom */
 .activity-section {
-  margin-top: auto; /* Push the avatar section to the bottom */
-  padding: 16px; /* Add some padding */
-  background-color: #f5f5f5; /* Light gray background */
+    margin-top: auto;
+    padding: 16px;
+    background-color: #f5f5f5;
 }
 </style>
