@@ -70,7 +70,7 @@ const nextPage = () => {
         <div class="flex justify-between items-center mb-4">
             <Input v-model="searchText" placeholder="Search..." class="w-1/3" />
             <div class="flex gap-2">
-                <Button variant="success">Filter</Button>
+                <Button>Filter</Button>
                 <Button variant="destructive">Reset</Button>
             </div>
         </div>
